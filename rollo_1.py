@@ -84,7 +84,7 @@ def main():
     #hochfahren
     schedule.every().day.at("08:44").do(zeitgeschaltet_hochfahren, motor_li_auf, motor_re_auf, switch)
     #runterfahren
-    schedule.every().day.at("16:11").do(zeitgeschaltet_runterfahren, motor_li_ab, motor_re_ab)
+    schedule.every().day.at("21:45").do(zeitgeschaltet_runterfahren, motor_li_ab, motor_re_ab)
 
     while True:
         schedule.run_pending()

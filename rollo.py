@@ -57,19 +57,19 @@ def zeitgeschaltet_runterfahren(motor_1, motor_2):
 
 def main():
     links_manuell_auf = Button(26)
-    links_manuell_zu = Button(13)
-    motor_li_ab = DigitalOutputDevice(24)
+    links_manuell_zu = Button(4)
+    motor_li_ab = DigitalOutputDevice(23)
     motor_li_auf = DigitalOutputDevice(18)
     
-    rechts_manuell_auf = Button(27)
-    rechts_manuell_zu = Button(5)
-    motor_re_auf = DigitalOutputDevice(25)
-    motor_re_ab = DigitalOutputDevice(23)
+    rechts_manuell_auf = Button(5)
+    rechts_manuell_zu = Button(27)
+    motor_re_auf = DigitalOutputDevice(24)
+    motor_re_ab = DigitalOutputDevice(25)
     
     links_auto_auf = Button(19, hold_time = 1)
     links_auto_zu = Button(6, hold_time = 1)
-    rechts_auto_auf = Button(17, hold_time = 1)
-    rechts_auto_zu = Button(22, hold_time = 1)
+    rechts_auto_auf = Button(22, hold_time = 1)
+    rechts_auto_zu = Button(17, hold_time = 1)
 
     switch = Button(SWITCH_PIN, pull_up=False)
 
