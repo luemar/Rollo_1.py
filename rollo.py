@@ -77,9 +77,13 @@ def main():
     logging.info('main gestarted')
 
     links_manuell_auf.when_pressed = motor_li_auf.on
+    print("li_manuell_auf_on")
     links_manuell_auf.when_released = motor_li_auf.off
+    print("li_manuell_auf_off")
     links_manuell_zu.when_pressed = motor_li_ab.on
+    print("li_manuell_zu_on")
     links_manuell_zu.when_released = motor_li_ab.off
+    print("li_manuell_zu_off")
     rechts_manuell_auf.when_pressed = motor_re_auf.on
     rechts_manuell_auf.when_released = motor_re_auf.off
     rechts_manuell_zu.when_pressed = motor_re_ab.on
