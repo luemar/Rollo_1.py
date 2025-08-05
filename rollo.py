@@ -76,24 +76,20 @@ def main():
     print('main gestarted')
     logging.info('main gestarted')
 
-    links_manuell_auf.when_pressed = motor_li_auf.on
-    print("li_manuell_auf_on")
-    links_manuell_auf.when_released = motor_li_auf.off
-    print("li_manuell_auf_off")
-    links_manuell_zu.when_pressed = motor_li_ab.on
-    print("li_manuell_zu_on")
-    links_manuell_zu.when_released = motor_li_ab.off
-    print("li_manuell_zu_off")
-    rechts_manuell_auf.when_pressed = motor_re_auf.on
-    rechts_manuell_auf.when_released = motor_re_auf.off
-    rechts_manuell_zu.when_pressed = motor_re_ab.on
-    rechts_manuell_zu.when_released = motor_re_ab.off
+    links_manuell_auf.when_pressed = lambda: (motor_li_auf.on(), print("li_auf_on"))
+    links_manuell_auf.when_released = lambda: (motor_li_auf.off(), print("li_auf_of"))
+    links_manuell_zu.when_pressed = lambda: (motor_li_ab.on(), print("li_ab_on"))
+    links_manuell_zu.when_released = lambda: (motor_li_ab.off(), print("li_ab_off"))
+    rechts_manuell_auf.when_pressed = lambda: (motor_re_auf.on(), print("re_auf_on"))
+    rechts_manuell_auf.when_released = lambda: (motor_re_auf.off(), print("re_auf_off"))
+    rechts_manuell_zu.when_pressed = lambda: (motor_re_ab.on(), print("re_ab_on"))
+    rechts_manuell_zu.when_released = lambda: (motor_re_ab.off(), print("re_ab_off"))
+ 
+    links_auto_auf.when_held = lambda: automatisch_fahren_li(motor_li_auf)
+    links_auto_zu.when_held = lambda: automatisch_fahren_li(motor_li_ab)
+    rechts_auto_auf.when_held = lambda: automatisch_fahren_re(motor_re_auf)
+    rechts_auto_zu.when_held = lambda: automatisch_fahren_re(motor_re_ab)
 
-    links_auto_auf.when_held = partial(automatisch_fahren_li, motor_li_auf)
-    links_auto_zu.when_held = partial(automatisch_fahren_li, motor_li_ab)
-    rechts_auto_auf.when_held = partial(automatisch_fahren_re, motor_re_auf)
-    rechts_auto_zu.when_held = partial(automatisch_fahren_re, motor_re_ab)
-    
     #hochfahren
     schedule.every().day.at("08:44").do(zeitgeschaltet_hochfahren, motor_li_auf, motor_re_auf, switch)
     #runterfahren
